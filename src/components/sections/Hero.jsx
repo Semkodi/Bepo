@@ -26,17 +26,17 @@ const Hero = () => {
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[10s] scale-105"
                         style={{ backgroundImage: `url(${heroSlides[current].img})` }}
                     />
-                    <div className="absolute inset-0 bg-black/50" />
+                    <div className="absolute inset-0 bg-black/40" />
                 </motion.div>
             </AnimatePresence>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-20">
-                <div className="max-w-3xl">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-12">
+                <div className="max-w-2xl">
                     <motion.h1
-                        initial={{ x: -40, opacity: 0 }}
+                        initial={{ x: -30, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.2, duration: 0.8 }}
-                        className="text-white text-5xl md:text-8xl font-black mb-10 leading-[1.05] tracking-tighter"
+                        transition={{ delay: 0.2, duration: 0.7 }}
+                        className="text-white text-5xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tighter"
                     >
                         {heroSlides[current].label.split(' ').map((word, i) => (
                             <span key={i} className="block">{word}</span>
@@ -44,28 +44,28 @@ const Hero = () => {
                     </motion.h1>
 
                     <motion.div
-                        initial={{ x: -40, opacity: 0 }}
+                        initial={{ x: -30, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.4, duration: 0.8 }}
-                        className="flex flex-col sm:flex-row items-center justify-start gap-4"
+                        transition={{ delay: 0.4, duration: 0.7 }}
+                        className="flex flex-col sm:flex-row items-center justify-start gap-3"
                     >
-                        <a href="#leistungen" className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#2563eb] text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/25 hover:-translate-y-1">
-                            Unsere Leistungen <ArrowRight size={20} />
+                        <a href="#leistungen" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#2563eb] text-white px-8 py-3.5 rounded-xl font-black uppercase tracking-widest text-[11px] hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/25 hover:-translate-y-1">
+                            Unsere Leistungen <ArrowRight size={18} />
                         </a>
-                        <a href="tel:064368779226" className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white hover:text-slate-900 transition-all hover:-translate-y-1">
-                            <Phone size={20} /> Jetzt anrufen
+                        <a href="tel:064368779226" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-3.5 rounded-xl font-black uppercase tracking-widest text-[11px] hover:bg-white hover:text-slate-900 transition-all hover:-translate-y-1">
+                            <Phone size={18} /> Jetzt anrufen
                         </a>
                     </motion.div>
                 </div>
             </div>
 
             {/* Dots */}
-            <div className="absolute bottom-12 left-6 flex gap-4 z-10">
+            <div className="absolute bottom-10 left-6 flex gap-3 z-10">
                 {heroSlides.map((_, i) => (
                     <button
                         key={i}
                         onClick={() => setCurrent(i)}
-                        className={`transition-all duration-500 rounded-full h-1.5 ${i === current ? 'bg-[#2563eb] w-12' : 'bg-white/20 w-3'}`}
+                        className={`transition-all duration-500 rounded-full h-1 ${i === current ? 'bg-[#2563eb] w-10' : 'bg-white/20 w-2.5'}`}
                     />
                 ))}
             </div>
