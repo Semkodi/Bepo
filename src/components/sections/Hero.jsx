@@ -61,8 +61,8 @@ const Hero = () => {
                         <a href="#leistungen" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#2563eb] text-white px-8 py-3.5 rounded-xl font-black uppercase tracking-widest text-[11px] hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/25 hover:-translate-y-1">
                             Unsere Leistungen <ArrowRight size={18} />
                         </a>
-                        <a href="#kontakt" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-3.5 rounded-xl font-black uppercase tracking-widest text-[11px] hover:bg-white hover:text-slate-900 transition-all hover:-translate-y-1">
-                            <Phone size={18} /> Projekt besprechen
+                        <a href="tel:064368779226" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-3.5 rounded-xl font-black uppercase tracking-widest text-[11px] hover:bg-white hover:text-slate-900 transition-all hover:-translate-y-1">
+                            <Phone size={18} /> Anrufen
                         </a>
                     </motion.div>
                 </div>

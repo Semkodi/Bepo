@@ -17,17 +17,10 @@ const Navbar = ({ scrolled }) => {
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-8">
                     {navLinks.map(link => (
-                        <a
-                            key={link.label}
-                            href={link.href}
-                            className={`text-sm font-bold uppercase tracking-wider hover:text-blue-500 transition-colors ${scrolled ? 'text-slate-700' : 'text-white'
-                                }`}
-                        >
-                            {link.label}
-                        </a>
+                        <a key={link.label} href={link.href} className={`text-xs font-black uppercase tracking-[0.1em] hover:text-[#2563eb] transition-colors ${scrolled ? 'text-slate-900' : 'text-white/80'}`}>{link.label}</a>
                     ))}
-                    <a href="tel:064368779226" className="bg-[#2563eb] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-bold text-sm">
-                        <Phone size={16} /> 06436 8779226
+                    <a href="#kontakt" className="bg-[#2563eb] text-white px-6 py-3 rounded-xl font-black uppercase tracking-[0.1em] text-[10px] hover:bg-blue-600 transition-all shadow-lg hover:-translate-y-0.5">
+                        Termin buchen
                     </a>
                 </div>
 
