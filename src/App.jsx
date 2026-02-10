@@ -27,7 +27,7 @@ import Impressum from './components/legal/Impressum';
 import Datenschutz from './components/legal/Datenschutz';
 
 // UI-Elemente
-import HinweisLeiste from './components/ui/HinweisLeiste';
+import CookieBanner from './components/ui/CookieBanner';
 import WhatsAppButton from './components/ui/WhatsAppButton';
 import ScrollNachOben from './components/ui/ScrollNachOben';
 
@@ -72,7 +72,7 @@ const App = () => {
             {/* Floating UI Layer */}
             <WhatsAppButton />
             <ScrollNachOben />
-            <HinweisLeiste />
+            <CookieBanner />
 
             {/* Overlays / Modals */}
             {showImpressum && <Impressum onClose={() => setShowImpressum(false)} />}
