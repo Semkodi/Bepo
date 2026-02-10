@@ -52,13 +52,13 @@ const App = () => {
                 <Hero />
                 <Kennzahlen />
                 <Services />
-                <Hersteller />
                 <Galerie />
                 <About />
                 <Reviews />
                 <FAQ />
                 <Einzugsgebiet />
                 <Blog />
+                <Hersteller />
                 <Terminbuchung />
                 <Contact />
             </main>

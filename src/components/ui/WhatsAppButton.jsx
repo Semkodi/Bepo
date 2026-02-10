@@ -12,8 +12,8 @@ const WhatsAppButton = () => {
             {/* Pulsating Ring */}
             <div className="absolute -inset-4 bg-emerald-500/20 rounded-full blur-2xl group-hover:bg-emerald-500/40 animate-pulse transition-all duration-700" />
 
-            <div className="relative bg-emerald-500 hover:bg-emerald-600 text-white w-16 h-16 lg:w-20 lg:h-20 rounded-[2.5rem] flex items-center justify-center shadow-2xl shadow-emerald-500/40 transition-all duration-500 transform group-hover:-translate-y-3 group-hover:rotate-12 active:scale-90">
-                <MessageCircle size={36} className="text-white drop-shadow-md" />
+            <div className="relative bg-emerald-500 hover:bg-emerald-600 text-white w-12 h-12 lg:w-14 lg:h-14 rounded-2xl flex items-center justify-center shadow-2xl shadow-emerald-500/40 transition-all duration-500 transform group-hover:-translate-y-2 group-hover:rotate-6 active:scale-95">
+                <MessageCircle size={24} className="text-white drop-shadow-md" />
 
                 {/* Floating Notification Dot */}
                 <div className="absolute top-0 right-0 w-6 h-6 bg-red-500 border-2 border-white rounded-full flex items-center justify-center animate-bounce shadow-lg">
