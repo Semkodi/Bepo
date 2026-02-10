@@ -1,40 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { ChevronUp } from 'lucide-react';
 
-// Scroll-nach-oben Button
 const ScrollNachOben = () => {
     const [sichtbar, setSichtbar] = useState(false);
 
     useEffect(() => {
-        const pruefen = () => setSichtbar(window.scrollY > 400);
-        window.addEventListener('scroll', pruefen);
-        return () => window.removeEventListener('scroll', pruefen);
+        const toggleSichtbarkeit = () => setSichtbar(window.scrollY > 400);
+        window.addEventListener('scroll', toggleSichtbarkeit);
+        return () => window.removeEventListener('scroll', toggleSichtbarkeit);
     }, []);
-
-    const nachObenScrollen = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
 
     if (!sichtbar) return null;
 
     return (
         <button
-            onClick={nachObenScrollen}
-            aria-label="Nach oben scrollen"
-            style={{
-                position: 'fixed', bottom: '5.5rem', right: '1.5rem', zIndex: 9989,
-                width: '46px', height: '46px', borderRadius: '50%',
-                background: '#1e293b', border: '1px solid rgba(255,255,255,0.1)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                cursor: 'pointer', color: '#fff',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
-                transition: 'transform 0.3s, background 0.3s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.background = '#2563eb'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.background = '#1e293b'; }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="fixed bottom-28 right-6 z-[9998] w-12 h-12 bg-white/80 backdrop-blur-md border border-slate-100 text-slate-900 rounded-2xl flex items-center justify-center shadow-lg hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:-translate-y-1 active:scale-95 group"
         >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 15l-6-6-6 6" />
-            </svg>
+            <ChevronUp size={20} className="group-hover:translate-y-[-2px] transition-transform" />
         </button>
     );
 };

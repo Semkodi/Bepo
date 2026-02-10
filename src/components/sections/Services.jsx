@@ -4,83 +4,70 @@ import { services } from '../../data/services';
 
 const Services = () => {
     return (
-        <section id="leistungen" style={{ padding: '6rem 1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
+        <section id="leistungen" className="py-24 lg:py-32 max-w-7xl mx-auto px-6">
             <FadeInSection>
-                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <span style={{
-                        display: 'inline-block', padding: '0.4rem 1rem', borderRadius: '999px',
-                        background: '#eff6ff', color: '#2563eb', fontSize: '0.75rem',
-                        fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem',
-                    }}>Unsere Fachbereiche</span>
-                    <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, color: '#1e293b', letterSpacing: '-0.03em' }}>
+                <div className="text-center mb-16 lg:mb-24">
+                    <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+                        Unsere Fachbereiche
+                    </span>
+                    <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
                         Was wir für Sie tun
                     </h2>
-                    <p style={{ fontSize: '1.05rem', color: '#64748b', marginTop: '0.75rem', maxWidth: '560px', margin: '0.75rem auto 0' }}>
+                    <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
                         Von der Beratung bis zur fertigen Montage – alles aus einer Hand mit Qualitätsgarantie.
+                        Wir setzen auf Markenprodukte „Made in Germany“.
                     </p>
                 </div>
             </FadeInSection>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+            <div className="grid gap-12 lg:gap-20">
                 {services.map((s, i) => (
                     <FadeInSection key={s.id} delay={i * 0.1}>
-                        <div className="hover-lift" style={{
-                            background: '#fff', borderRadius: '1.5rem',
-                            border: '1px solid #f1f5f9', boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-                            overflow: 'hidden', cursor: 'default',
-                        }}>
-                            <div style={{ display: 'grid', gap: 0 }} className="service-card-grid">
-                                {/* Bild */}
-                                <div style={{ overflow: 'hidden', minHeight: '250px', position: 'relative' }}>
-                                    <img src={s.img} alt={s.title} loading="lazy" style={{
-                                        width: '100%', height: '100%', objectFit: 'cover',
-                                        position: 'absolute', inset: 0,
-                                    }} />
-                                    <div style={{
-                                        position: 'absolute', top: '1rem', left: '1rem',
-                                        background: 'rgba(37,99,235,0.9)', color: '#fff',
-                                        padding: '0.4rem 0.8rem', borderRadius: '0.5rem',
-                                        fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase',
-                                        letterSpacing: '0.08em', backdropFilter: 'blur(4px)',
-                                    }}>
+                        <div className="group bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden">
+                            <div className="flex flex-col lg:flex-row">
+                                {/* Image Container */}
+                                <div className="lg:w-5/12 relative aspect-[16/10] lg:aspect-square overflow-hidden">
+                                    <img
+                                        src={s.img}
+                                        alt={s.title}
+                                        loading="lazy"
+                                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                    <div className="absolute top-6 left-6 px-4 py-2 rounded-xl bg-primary/90 text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md">
                                         {s.title}
                                     </div>
                                 </div>
 
-                                {/* Inhalt */}
-                                <div style={{ padding: 'clamp(1.5rem, 3vw, 2.5rem)' }}>
-                                    <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#1e293b', marginBottom: '0.25rem' }}>
+                                {/* Content Container */}
+                                <div className="lg:w-7/12 p-8 lg:p-16 flex flex-col justify-center">
+                                    <h3 className="text-3xl font-extrabold text-slate-900 mb-2">
                                         {s.title}
                                     </h3>
-                                    <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8', marginBottom: '1rem', letterSpacing: '0.02em' }}>
+                                    <div className="text-sm font-bold text-primary mb-6 flex items-center gap-2">
+                                        <span className="w-8 h-[2px] bg-primary/20" />
                                         {s.subtitle}
                                     </div>
-                                    <p style={{ color: '#64748b', lineHeight: 1.7, fontSize: '0.95rem', marginBottom: '1.5rem' }}>
+                                    <p className="text-slate-500 leading-relaxed mb-10 text-lg">
                                         {s.desc}
                                     </p>
 
-                                    {/* Vorteile */}
-                                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.75rem', marginBottom: '1.5rem' }}>
+                                    {/* Features Grid */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                                         {s.benefits.map((b, j) => (
-                                            <div key={j} style={{
-                                                display: 'flex', alignItems: 'center', gap: '0.6rem',
-                                                padding: '0.6rem 0.75rem', borderRadius: '0.6rem',
-                                                background: '#f8fafc', border: '1px solid #f1f5f9',
-                                            }}>
-                                                <div style={{ color: '#2563eb', flexShrink: 0 }}>{b.icon}</div>
-                                                <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#334155' }}>{b.text}</span>
+                                            <div key={j} className="flex items-center gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-100/50 hover:bg-white hover:shadow-lg transition-all">
+                                                <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                                    {b.icon}
+                                                </div>
+                                                <span className="text-sm font-bold text-slate-700">{b.text}</span>
                                             </div>
                                         ))}
                                     </div>
 
-                                    {/* Highlights */}
-                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                                    {/* Badges */}
+                                    <div className="flex flex-wrap gap-2 text-[10px] font-black tracking-widest uppercase">
                                         {s.highlights.map((h, j) => (
-                                            <span key={j} style={{
-                                                padding: '0.35rem 0.75rem', borderRadius: '999px',
-                                                background: '#eff6ff', color: '#2563eb',
-                                                fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.03em',
-                                            }}>
+                                            <span key={j} className="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-500 border border-slate-200/50">
                                                 {h}
                                             </span>
                                         ))}

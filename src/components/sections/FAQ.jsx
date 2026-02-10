@@ -3,70 +3,51 @@ import { ChevronDown } from 'lucide-react';
 import FadeInSection from '../ui/FadeInSection';
 import { faqDaten } from '../../data/faq';
 
-// FAQ Akkordeon-Element
 const FaqElement = ({ frage, antwort, istOffen, umschalten }) => (
-    <div style={{
-        background: '#fff', borderRadius: '1rem',
-        border: istOffen ? '1px solid #dbeafe' : '1px solid #f1f5f9',
-        overflow: 'hidden', transition: 'border-color 0.3s, box-shadow 0.3s',
-        boxShadow: istOffen ? '0 4px 20px rgba(37,99,235,0.08)' : '0 1px 4px rgba(0,0,0,0.03)',
-    }}>
-        <button onClick={umschalten} style={{
-            width: '100%', padding: '1.25rem 1.5rem',
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            background: 'none', border: 'none', cursor: 'pointer',
-            textAlign: 'left', fontFamily: 'inherit',
-        }}>
-            <span style={{
-                fontSize: '0.95rem', fontWeight: 700,
-                color: istOffen ? '#2563eb' : '#1e293b',
-                transition: 'color 0.3s',
-            }}>{frage}</span>
-            <div style={{
-                width: '32px', height: '32px', borderRadius: '0.5rem',
-                background: istOffen ? '#eff6ff' : '#f8fafc',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                flexShrink: 0, marginLeft: '1rem',
-                transition: 'transform 0.3s, background 0.3s',
-                transform: istOffen ? 'rotate(180deg)' : 'rotate(0)',
-            }}>
-                <ChevronDown size={18} style={{ color: istOffen ? '#2563eb' : '#94a3b8' }} />
+    <div className={`rounded-3xl border transition-all duration-500 overflow-hidden ${istOffen ? 'bg-white border-primary/20 shadow-xl shadow-primary/5' : 'bg-white/50 border-slate-100 hover:border-slate-200'
+        }`}>
+        <button
+            onClick={umschalten}
+            className="w-full px-8 py-6 flex items-center justify-between text-left group"
+        >
+            <span className={`text-lg font-bold transition-colors duration-300 ${istOffen ? 'text-primary' : 'text-slate-800 group-hover:text-primary'
+                }`}>
+                {frage}
+            </span>
+            <div className={`flex-shrink-0 w-10 h-10 rounded-2xl flex items-center justify-center transition-all duration-500 ${istOffen ? 'bg-primary text-white rotate-180' : 'bg-slate-100 text-slate-400'
+                }`}>
+                <ChevronDown size={20} />
             </div>
         </button>
-        <div style={{
-            maxHeight: istOffen ? '300px' : '0',
-            overflow: 'hidden',
-            transition: 'max-height 0.4s ease, padding 0.3s ease',
-            padding: istOffen ? '0 1.5rem 1.25rem' : '0 1.5rem',
-        }}>
-            <p style={{ color: '#64748b', lineHeight: 1.7, fontSize: '0.9rem' }}>{antwort}</p>
+        <div className={`transition-all duration-500 ease-in-out px-8 overflow-hidden ${istOffen ? 'max-h-96 pb-8 opacity-100' : 'max-h-0 opacity-0'
+            }`}>
+            <p className="text-slate-500 leading-relaxed text-[15px]">
+                {antwort}
+            </p>
         </div>
     </div>
 );
 
-// FAQ-Bereich
 const FAQ = () => {
     const [offenerIndex, setOffenerIndex] = useState(null);
 
     return (
-        <section id="faq" style={{ padding: '6rem 1.5rem' }}>
-            <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <section id="faq" className="py-24 lg:py-32 bg-white overflow-hidden">
+            <div className="max-w-4xl mx-auto px-6">
                 <FadeInSection>
-                    <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-                        <span style={{
-                            display: 'inline-block', padding: '0.4rem 1rem', borderRadius: '999px',
-                            background: '#eff6ff', color: '#2563eb', fontSize: '0.75rem',
-                            fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem',
-                        }}>Häufige Fragen</span>
-                        <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, color: '#1e293b', letterSpacing: '-0.03em' }}>
-                            FAQ – Alles Wichtige auf einen Blick
+                    <div className="text-center mb-16">
+                        <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+                            Häufige Fragen
+                        </span>
+                        <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                            FAQ – Alles <span className="text-primary italic">Wichtige</span>
                         </h2>
                     </div>
                 </FadeInSection>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <div className="flex flex-col gap-4">
                     {faqDaten.map((item, i) => (
-                        <FadeInSection key={i} delay={i * 0.06}>
+                        <FadeInSection key={i} delay={i * 0.05}>
                             <FaqElement
                                 frage={item.frage}
                                 antwort={item.antwort}

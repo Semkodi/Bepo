@@ -1,71 +1,70 @@
 import React, { useState, useEffect } from 'react';
+import { ShieldCheck, X } from 'lucide-react';
 
-// Cookie-Banner nach DSGVO
-const CookieBanner = () => {
+const HinweisLeiste = () => {
     const [sichtbar, setSichtbar] = useState(false);
 
     useEffect(() => {
         const akzeptiert = localStorage.getItem('cookies-akzeptiert');
-        if (!akzeptiert) setSichtbar(true);
+        if (!akzeptiert) {
+            const timer = setTimeout(() => setSichtbar(true), 2000);
+            return () => clearTimeout(timer);
+        }
     }, []);
 
     const akzeptieren = () => {
-        localStorage.setItem('cookies-akzeptiert', 'alle');
-        setSichtbar(false);
-    };
-
-    const nurNotwendige = () => {
-        localStorage.setItem('cookies-akzeptiert', 'notwendig');
+        localStorage.setItem('cookies-akzeptiert', 'true');
         setSichtbar(false);
     };
 
     if (!sichtbar) return null;
 
     return (
-        <div style={{
-            position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 9998,
-            background: 'rgba(15,23,42,0.97)', backdropFilter: 'blur(20px)',
-            padding: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.1)',
-        }}>
-            <div style={{
-                maxWidth: '1200px', margin: '0 auto',
-                display: 'flex', flexWrap: 'wrap', alignItems: 'center',
-                gap: '1.5rem', justifyContent: 'space-between',
-            }}>
-                <div style={{ flex: '1 1 400px' }}>
-                    <p style={{ color: '#fff', fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.35rem' }}>
-                        🍪 Wir nutzen Cookies
+        <div className="fixed bottom-6 left-6 right-6 md:left-auto md:max-w-md z-[10000] animate-fade-in-up">
+            <div className="bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 lg:p-10 shadow-3xl overflow-hidden relative">
+                {/* Glow Background */}
+                <div className="absolute -top-12 -right-12 w-32 h-32 bg-primary/20 rounded-full blur-2xl pointer-events-none" />
+
+                <div className="relative z-10">
+                    <div className="flex items-center gap-4 mb-6">
+                        <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
+                            <ShieldCheck size={28} />
+                        </div>
+                        <h4 className="text-lg font-black text-white tracking-tight uppercase italic underline decoration-primary decoration-4 underline-offset-4">
+                            Cookie-Hinweis
+                        </h4>
+                    </div>
+
+                    <p className="text-white/60 text-[13px] leading-relaxed mb-10">
+                        Wir nutzen Google Fonts und essenzielle Cookies, um Ihnen die beste Erfahrung auf unserer Webseite zu ermöglichen.
+                        Details finden Sie in unserer <span className="text-primary font-bold">Datenschutzerklärung</span>.
                     </p>
-                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem', lineHeight: 1.6 }}>
-                        Diese Website verwendet Cookies und externe Dienste (Google Fonts) für eine optimale Darstellung.
-                        Weitere Informationen finden Sie in unserer Datenschutzerklärung.
-                    </p>
+
+                    <div className="flex flex-col gap-3">
+                        <button
+                            onClick={akzeptieren}
+                            className="w-full py-4 bg-primary hover:bg-primary-dark text-white rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-xl shadow-primary/20 transition-all hover:-translate-y-1"
+                        >
+                            Alle akzeptieren
+                        </button>
+                        <button
+                            onClick={() => setSichtbar(false)}
+                            className="w-full py-4 bg-white/5 hover:bg-white/10 text-white/60 hover:text-white rounded-2xl font-black uppercase tracking-widest text-[11px] transition-all"
+                        >
+                            Nur Notwendige
+                        </button>
+                    </div>
                 </div>
-                <div style={{ display: 'flex', gap: '0.75rem', flexShrink: 0 }}>
-                    <button onClick={nurNotwendige} style={{
-                        padding: '0.65rem 1.25rem', background: 'rgba(255,255,255,0.1)',
-                        border: '1px solid rgba(255,255,255,0.2)', borderRadius: '0.6rem',
-                        color: '#fff', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer',
-                        transition: 'background 0.3s',
-                    }}
-                        onMouseEnter={e => e.target.style.background = 'rgba(255,255,255,0.2)'}
-                        onMouseLeave={e => e.target.style.background = 'rgba(255,255,255,0.1)'}>
-                        Nur notwendige
-                    </button>
-                    <button onClick={akzeptieren} style={{
-                        padding: '0.65rem 1.25rem', background: '#2563eb',
-                        border: 'none', borderRadius: '0.6rem',
-                        color: '#fff', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer',
-                        transition: 'background 0.3s',
-                    }}
-                        onMouseEnter={e => e.target.style.background = '#1d4ed8'}
-                        onMouseLeave={e => e.target.style.background = '#2563eb'}>
-                        Alle akzeptieren
-                    </button>
-                </div>
+
+                <button
+                    onClick={() => setSichtbar(false)}
+                    className="absolute top-6 right-6 text-white/20 hover:text-white transition-colors"
+                >
+                    <X size={20} />
+                </button>
             </div>
         </div>
     );
 };
 
-export default CookieBanner;
+export default HinweisLeiste;

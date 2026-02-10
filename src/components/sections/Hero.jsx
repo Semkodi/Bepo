@@ -12,84 +12,66 @@ const Hero = () => {
     }, []);
 
     return (
-        <section id="home" style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+        <section id="home" className="relative min-h-screen overflow-hidden">
+            {/* Background Slideshow */}
             <AnimatePresence mode="wait">
-                <motion.div key={currentImage}
-                    initial={{ opacity: 0, scale: 1.08 }}
+                <motion.div
+                    key={currentImage}
+                    initial={{ opacity: 0, scale: 1.1 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1.5, ease: 'easeOut' }}
-                    style={{
-                        position: 'absolute', inset: 0,
-                        backgroundImage: `url(${heroSlides[currentImage].img})`,
-                        backgroundSize: 'cover', backgroundPosition: 'center',
-                    }}
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${heroSlides[currentImage].img})` }}
                 />
             </AnimatePresence>
 
-            <div style={{
-                position: 'absolute', inset: 0,
-                background: 'linear-gradient(135deg, rgba(15,23,42,0.75) 0%, rgba(15,23,42,0.4) 50%, rgba(37,99,235,0.15) 100%)',
-            }} />
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/40 to-primary/20" />
 
-            <div style={{
-                position: 'relative', zIndex: 10,
-                maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem',
-                minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center',
-            }}>
-                <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
-                    style={{
-                        fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 800,
-                        lineHeight: 1.05, letterSpacing: '-0.03em',
-                        color: '#fff', marginBottom: '1.5rem', maxWidth: '700px',
-                    }}>
-                    {heroSlides[currentImage].label}
-                </motion.h1>
+            {/* Content */}
+            <div className="relative z-10 max-w-7xl mx-auto px-6 min-h-screen flex flex-col justify-center">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="max-w-3xl"
+                >
+                    <h1 className="text-white text-5xl md:text-7xl font-extrabold leading-[1.05] tracking-tight mb-6">
+                        {heroSlides[currentImage].label}
+                    </h1>
+                    <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
+                        Fenster · Haustüren · Rollladen · Markisen – alles aus einer Hand.
+                        Persönliche Beratung, saubere Montage, faire Preise im Westerwald.
+                    </p>
 
-                <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}
-                    style={{
-                        fontSize: 'clamp(1rem, 2vw, 1.2rem)', color: 'rgba(255,255,255,0.7)',
-                        maxWidth: '540px', lineHeight: 1.7, marginBottom: '2.5rem',
-                    }}>
-                    Fenster · Haustüren · Rollladen · Markisen – alles aus einer Hand. Persönliche Beratung, saubere Montage, faire Preise.
-                </motion.p>
-
-                <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }}
-                    style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                    <a href="#leistungen" style={{
-                        display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                        padding: '1rem 2rem', background: '#2563eb', color: '#fff',
-                        borderRadius: '0.75rem', fontWeight: 700, fontSize: '0.95rem',
-                        transition: 'all 0.3s', boxShadow: '0 4px 20px rgba(37,99,235,0.4)',
-                    }}
-                        onMouseEnter={e => { e.target.style.background = '#1d4ed8'; e.target.style.transform = 'translateY(-2px)'; }}
-                        onMouseLeave={e => { e.target.style.background = '#2563eb'; e.target.style.transform = 'translateY(0)'; }}>
-                        Unsere Leistungen <ArrowRight size={18} />
-                    </a>
-                    <a href="tel:064368779226" style={{
-                        display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                        padding: '1rem 2rem', background: 'rgba(255,255,255,0.12)',
-                        border: '1px solid rgba(255,255,255,0.25)', color: '#fff',
-                        borderRadius: '0.75rem', fontWeight: 600, backdropFilter: 'blur(10px)',
-                        transition: 'all 0.3s',
-                    }}
-                        onMouseEnter={e => e.target.style.background = 'rgba(255,255,255,0.2)'}
-                        onMouseLeave={e => e.target.style.background = 'rgba(255,255,255,0.12)'}>
-                        <Phone size={16} /> Anrufen
-                    </a>
+                    <div className="flex flex-wrap gap-4">
+                        <a
+                            href="#leistungen"
+                            className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-2xl font-extrabold shadow-2xl shadow-primary/40 group overflow-hidden relative"
+                        >
+                            <span className="relative z-10">Unsere Leistungen</span>
+                            <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+                            <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                        </a>
+                        <a
+                            href="tel:064368779226"
+                            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold transition-all"
+                        >
+                            <Phone size={18} /> Anrufen
+                        </a>
+                    </div>
                 </motion.div>
 
-                <div style={{
-                    position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)',
-                    display: 'flex', gap: '0.5rem',
-                }}>
+                {/* Progress Indicators */}
+                <div className="absolute bottom-12 left-6 right-6 flex justify-center gap-3">
                     {heroSlides.map((_, idx) => (
-                        <button key={idx} onClick={() => setCurrentImage(idx)} style={{
-                            width: idx === currentImage ? '2rem' : '0.5rem', height: '0.5rem',
-                            borderRadius: '999px', border: 'none', cursor: 'pointer',
-                            background: idx === currentImage ? '#2563eb' : 'rgba(255,255,255,0.4)',
-                            transition: 'all 0.4s',
-                        }} />
+                        <button
+                            key={idx}
+                            onClick={() => setCurrentImage(idx)}
+                            className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentImage ? 'w-12 bg-primary' : 'w-2 bg-white/30'
+                                }`}
+                        />
                     ))}
                 </div>
             </div>

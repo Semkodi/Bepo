@@ -2,53 +2,41 @@ import React from 'react';
 import FadeInSection from '../ui/FadeInSection';
 import { hersteller } from '../../data/hersteller';
 
-// Hersteller-Partner Logos / Badges
 const Hersteller = () => {
     return (
-        <section style={{ padding: '4rem 1.5rem', background: '#fff' }}>
-            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <section className="py-20 lg:py-24 border-y border-slate-50 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6">
                 <FadeInSection>
-                    <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-                        <span style={{
-                            display: 'inline-block', padding: '0.4rem 1rem', borderRadius: '999px',
-                            background: '#eff6ff', color: '#2563eb', fontSize: '0.75rem',
-                            fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem',
-                        }}>Qualitätspartner</span>
-                        <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 800, color: '#1e293b', letterSpacing: '-0.03em' }}>
+                    <div className="text-center mb-16">
+                        <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+                            Qualitätspartner
+                        </span>
+                        <h2 className="text-2xl lg:text-3xl font-extrabold text-slate-800 tracking-tight">
                             Wir verbauen nur Markenprodukte
                         </h2>
                     </div>
 
-                    <div style={{
-                        display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.5rem',
-                    }}>
+                    <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16">
                         {hersteller.map((h, i) => (
-                            <div key={i} className="hover-lift" style={{
-                                padding: '1.5rem 2.5rem',
-                                background: '#f8fafc', borderRadius: '1rem',
-                                border: '1px solid #f1f5f9',
-                                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem',
-                                minWidth: '180px',
-                                transition: 'all 0.3s',
-                            }}>
-                                <span style={{
-                                    fontSize: '1.25rem', fontWeight: 800, color: '#1e293b',
-                                    letterSpacing: '-0.02em',
-                                }}>{h.name}</span>
-                                <span style={{
-                                    fontSize: '0.7rem', fontWeight: 600, color: '#94a3b8',
-                                    textTransform: 'uppercase', letterSpacing: '0.08em',
-                                }}>{h.kategorie}</span>
+                            <div
+                                key={i}
+                                className="group flex flex-col items-center gap-2 grayscale hover:grayscale-0 transition-all duration-500 hover:-translate-y-1"
+                            >
+                                <div className="text-3xl lg:text-4xl font-black text-slate-900 tracking-tighter mb-1">
+                                    {h.name}
+                                </div>
+                                <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-primary transition-colors">
+                                    {h.kategorie}
+                                </div>
                             </div>
                         ))}
                     </div>
 
-                    <p style={{
-                        textAlign: 'center', marginTop: '2rem',
-                        fontSize: '0.82rem', color: '#94a3b8',
-                    }}>
-                        Alle Produkte sind „Made in Germany" und erfüllen höchste Qualitätsstandards.
-                    </p>
+                    <div className="mt-16 pt-8 border-t border-slate-50 text-center">
+                        <p className="text-xs font-bold text-slate-300 uppercase tracking-widest">
+                            Made in Germany Quality Standards
+                        </p>
+                    </div>
                 </FadeInSection>
             </div>
         </section>

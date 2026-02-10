@@ -3,7 +3,6 @@ import { useInView } from 'framer-motion';
 import FadeInSection from '../ui/FadeInSection';
 import { kennzahlen } from '../../data/kennzahlen';
 
-// Animierter Zähler
 const AnimierterZaehler = ({ zielwert, suffix, dauer }) => {
     const [wert, setWert] = useState(0);
     const ref = useRef(null);
@@ -34,40 +33,20 @@ const AnimierterZaehler = ({ zielwert, suffix, dauer }) => {
 
 const Kennzahlen = () => {
     return (
-        <section style={{
-            padding: '4rem 1.5rem',
-            background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-        }}>
-            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                    gap: '2rem',
-                    textAlign: 'center',
-                }}>
+        <section className="py-20 lg:py-24 bg-slate-900 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
                     {kennzahlen.map((k, i) => (
                         <FadeInSection key={i} delay={i * 0.1}>
-                            <div style={{ padding: '1.5rem' }}>
-                                <div style={{
-                                    fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
-                                    fontWeight: 800,
-                                    color: '#2563eb',
-                                    letterSpacing: '-0.03em',
-                                    lineHeight: 1,
-                                    marginBottom: '0.5rem',
-                                }}>
+                            <div className="text-center group p-6 lg:p-8 rounded-[2rem] hover:bg-white/5 transition-all duration-500">
+                                <div className="text-4xl lg:text-6xl font-black text-primary mb-3 tracking-tighter transition-transform duration-500 group-hover:scale-110">
                                     <AnimierterZaehler
                                         zielwert={k.zahl}
                                         suffix={k.suffix}
                                         dauer={k.dauer}
                                     />
                                 </div>
-                                <div style={{
-                                    fontSize: '0.9rem',
-                                    fontWeight: 600,
-                                    color: 'rgba(255,255,255,0.7)',
-                                    letterSpacing: '0.02em',
-                                }}>
+                                <div className="text-[10px] lg:text-xs font-black uppercase tracking-[0.2em] text-white/40 group-hover:text-white/60 transition-colors">
                                     {k.label}
                                 </div>
                             </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 /* ============================================================
    GIUSEPPE MILAZZO – Fenster · Rollladen · Markisen · Haustüren
-   Alle Komponenten modular aufgebaut.
+   Komplett Refactored mit Tailwind CSS & React
    ============================================================ */
 
 // Layout
@@ -28,7 +28,7 @@ import Impressum from './components/legal/Impressum';
 import Datenschutz from './components/legal/Datenschutz';
 
 // UI-Elemente
-import CookieBanner from './components/ui/HinweisLeiste';
+import HinweisLeiste from './components/ui/HinweisLeiste';
 import WhatsAppButton from './components/ui/WhatsAppButton';
 import ScrollNachOben from './components/ui/ScrollNachOben';
 
@@ -44,24 +44,26 @@ const App = () => {
     }, []);
 
     return (
-        <div style={{ minHeight: '100vh', background: '#fff' }}>
+        <div className="min-h-screen bg-white selection:bg-primary/10 selection:text-primary">
 
             {/* Navigation */}
             <Navbar scrolled={scrolled} />
 
             {/* Hauptinhalt */}
-            <Hero />
-            <Kennzahlen />
-            <Services />
-            <Galerie />
-            <Hersteller />
-            <About />
-            <Reviews />
-            <FAQ />
-            <Einzugsgebiet />
-            <Blog />
-            <Terminbuchung />
-            <Contact />
+            <main>
+                <Hero />
+                <Kennzahlen />
+                <Services />
+                <Galerie />
+                <Hersteller />
+                <About />
+                <Reviews />
+                <FAQ />
+                <Einzugsgebiet />
+                <Blog />
+                <Terminbuchung />
+                <Contact />
+            </main>
 
             {/* Footer */}
             <Footer
@@ -69,44 +71,10 @@ const App = () => {
                 onShowDatenschutz={() => setShowDatenschutz(true)}
             />
 
-            {/* Responsive Stile */}
-            <style>{`
-                .nav-desktop { display: none; }
-                .nav-mobile-btn { display: block; }
-                .about-grid { grid-template-columns: 1fr !important; }
-                .service-card-grid { grid-template-columns: 1fr !important; }
-
-                @media (min-width: 768px) {
-                    .nav-desktop { display: flex !important; }
-                    .nav-mobile-btn { display: none !important; }
-                }
-
-                @media (min-width: 900px) {
-                    .about-grid { grid-template-columns: 1fr 1fr !important; }
-                    .service-card-grid { grid-template-columns: 1fr 1.2fr !important; }
-                }
-
-                input::placeholder, textarea::placeholder {
-                    color: rgba(255,255,255,0.3);
-                }
-
-                html {
-                    scroll-behavior: smooth;
-                }
-
-                .hover-lift {
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                }
-                .hover-lift:hover {
-                    transform: translateY(-4px);
-                    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
-                }
-            `}</style>
-
             {/* Schwebende UI-Elemente */}
             <WhatsAppButton />
             <ScrollNachOben />
-            <CookieBanner />
+            <HinweisLeiste />
 
             {/* Rechtliche Overlays */}
             {showImpressum && <Impressum onClose={() => setShowImpressum(false)} />}

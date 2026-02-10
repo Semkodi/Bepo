@@ -2,86 +2,65 @@ import React, { useState } from 'react';
 import FadeInSection from '../ui/FadeInSection';
 import { galerieBilder } from '../../data/galerie';
 
-// Referenz-Galerie mit Kategorie-Filter
 const Galerie = () => {
     const [filter, setFilter] = useState('Alle');
     const kategorien = ['Alle', ...new Set(galerieBilder.map(b => b.kategorie))];
     const gefilterteBilder = filter === 'Alle' ? galerieBilder : galerieBilder.filter(b => b.kategorie === filter);
 
     return (
-        <section id="referenzen" style={{ padding: '6rem 1.5rem', background: '#f8fafc' }}>
-            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <section id="referenzen" className="py-24 lg:py-32 bg-slate-50">
+            <div className="max-w-7xl mx-auto px-6">
                 <FadeInSection>
-                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                        <span style={{
-                            display: 'inline-block', padding: '0.4rem 1rem', borderRadius: '999px',
-                            background: '#eff6ff', color: '#2563eb', fontSize: '0.75rem',
-                            fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem',
-                        }}>Unsere Arbeit</span>
-                        <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, color: '#1e293b', letterSpacing: '-0.03em' }}>
+                    <div className="text-center mb-16">
+                        <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+                            Unsere Arbeit
+                        </span>
+                        <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
                             Referenzprojekte
                         </h2>
-                        <p style={{ fontSize: '1.05rem', color: '#64748b', marginTop: '0.75rem', maxWidth: '560px', margin: '0.75rem auto 0' }}>
-                            Überzeugen Sie sich von unserer Arbeit – hier sehen Sie eine Auswahl unserer Projekte.
-                        </p>
                     </div>
 
-                    {/* Kategorie-Filter */}
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
+                    {/* Filter Navigation */}
+                    <div className="flex flex-wrap justify-center gap-3 mb-16">
                         {kategorien.map(k => (
-                            <button key={k} onClick={() => setFilter(k)} style={{
-                                padding: '0.5rem 1.25rem', borderRadius: '999px',
-                                border: 'none', cursor: 'pointer',
-                                fontSize: '0.8rem', fontWeight: 600,
-                                background: filter === k ? '#2563eb' : '#fff',
-                                color: filter === k ? '#fff' : '#64748b',
-                                boxShadow: filter === k ? '0 4px 12px rgba(37,99,235,0.3)' : '0 1px 4px rgba(0,0,0,0.06)',
-                                transition: 'all 0.3s',
-                            }}>
+                            <button
+                                key={k}
+                                onClick={() => setFilter(k)}
+                                className={`px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all duration-300 ${filter === k
+                                        ? 'bg-primary text-white shadow-xl shadow-primary/30'
+                                        : 'bg-white text-slate-400 hover:text-slate-600 border border-slate-100'
+                                    }`}
+                            >
                                 {k}
                             </button>
                         ))}
                     </div>
                 </FadeInSection>
 
-                {/* Bilder-Grid */}
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-                    gap: '1.5rem',
-                }}>
+                {/* Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {gefilterteBilder.map((bild, i) => (
-                        <FadeInSection key={bild.titel} delay={i * 0.08}>
-                            <div className="hover-lift" style={{
-                                borderRadius: '1.25rem', overflow: 'hidden',
-                                background: '#fff', boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-                                border: '1px solid #f1f5f9',
-                            }}>
-                                <div style={{ position: 'relative', overflow: 'hidden' }}>
+                        <FadeInSection key={bild.titel} delay={i * 0.05}>
+                            <div className="group relative rounded-[2.5rem] overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-500">
+                                <div className="aspect-[4/5] overflow-hidden">
                                     <img
                                         src={bild.bild}
                                         alt={bild.titel}
                                         loading="lazy"
-                                        style={{
-                                            width: '100%', height: '220px', objectFit: 'cover',
-                                            transition: 'transform 0.5s',
-                                        }}
-                                        onMouseEnter={e => e.target.style.transform = 'scale(1.05)'}
-                                        onMouseLeave={e => e.target.style.transform = 'scale(1)'}
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
-                                    <span style={{
-                                        position: 'absolute', top: '0.75rem', left: '0.75rem',
-                                        padding: '0.3rem 0.7rem', borderRadius: '999px',
-                                        background: 'rgba(37,99,235,0.9)', color: '#fff',
-                                        fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase',
-                                        letterSpacing: '0.05em', backdropFilter: 'blur(4px)',
-                                    }}>{bild.kategorie}</span>
-                                </div>
-                                <div style={{ padding: '1.25rem' }}>
-                                    <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#1e293b', marginBottom: '0.3rem' }}>
-                                        {bild.titel}
-                                    </h3>
-                                    <p style={{ fontSize: '0.85rem', color: '#64748b' }}>{bild.beschreibung}</p>
+                                    {/* Overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-10">
+                                        <div className="px-3 py-1 self-start bg-primary text-white text-[9px] font-black uppercase tracking-widest rounded-lg mb-4">
+                                            {bild.kategorie}
+                                        </div>
+                                        <h3 className="text-2xl font-black text-white mb-2 leading-tight">
+                                            {bild.titel}
+                                        </h3>
+                                        <p className="text-white/60 text-sm italic">
+                                            {bild.beschreibung}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </FadeInSection>
