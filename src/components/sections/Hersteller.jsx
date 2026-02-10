@@ -4,40 +4,29 @@ import { hersteller } from '../../data/hersteller';
 
 const Hersteller = () => {
     return (
-        <section className="py-20 lg:py-24 border-y border-slate-50 overflow-hidden">
+        <section className="py-20 bg-white border-y border-slate-50">
             <div className="max-w-7xl mx-auto px-6">
                 <FadeInSection>
                     <div className="text-center mb-16">
-                        <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
-                            Qualitätspartner
-                        </span>
-                        <h2 className="text-2xl lg:text-3xl font-extrabold text-slate-800 tracking-tight">
-                            Wir verbauen nur Markenprodukte
-                        </h2>
-                    </div>
-
-                    <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16">
-                        {hersteller.map((h, i) => (
-                            <div
-                                key={i}
-                                className="group flex flex-col items-center gap-2 grayscale hover:grayscale-0 transition-all duration-500 hover:-translate-y-1"
-                            >
-                                <div className="text-3xl lg:text-4xl font-black text-slate-900 tracking-tighter mb-1">
-                                    {h.name}
-                                </div>
-                                <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-primary transition-colors">
-                                    {h.kategorie}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="mt-16 pt-8 border-t border-slate-50 text-center">
-                        <p className="text-xs font-bold text-slate-300 uppercase tracking-widest">
-                            Made in Germany Quality Standards
-                        </p>
+                        <span className="text-slate-400 font-black uppercase tracking-[0.4em] text-[10px] block mb-4 italic">Vertrauen & Qualität</span>
+                        <h3 className="text-2xl font-black text-slate-900 tracking-tighter uppercase italic">
+                            Unsere <span className="text-[#2563eb]">Partner</span> & Hersteller
+                        </h3>
                     </div>
                 </FadeInSection>
+
+                <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 hover:opacity-100 transition-opacity duration-700">
+                    {hersteller.map((h, i) => (
+                        <div key={i} className="group cursor-default">
+                            <div className="text-3xl md:text-4xl font-black text-slate-800 tracking-tighter group-hover:text-[#2563eb] transition-colors">
+                                {h.name}
+                            </div>
+                            <div className="text-[9px] font-black text-[#2563eb]/50 uppercase tracking-[0.3em] mt-1 group-hover:text-[#2563eb] transition-colors">
+                                {h.kategorie}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );

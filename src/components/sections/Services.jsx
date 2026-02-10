@@ -1,82 +1,141 @@
 import React from 'react';
+import { Check, ShieldCheck, Sun, Wind, Lock, Zap, Gauge, Star } from 'lucide-react';
 import FadeInSection from '../ui/FadeInSection';
-import { services } from '../../data/services';
+
+const ServiceCard = ({ image, title, subtitle, desc, benefits, tags, badgeColor }) => (
+    <div className="bg-white rounded-[3rem] overflow-hidden shadow-2xl shadow-slate-200/50 border border-slate-100 mb-16 last:mb-0 flex flex-col lg:flex-row group hover:shadow-3xl transition-all duration-700">
+        {/* Image Side - Fixed Height Container */}
+        <div className="lg:w-[45%] h-[400px] lg:h-auto relative overflow-hidden">
+            <img
+                src={image}
+                alt={title}
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+            />
+            <div className={`absolute top-8 left-8 ${badgeColor} text-white px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest z-10 shadow-lg`}>
+                {title}
+            </div>
+        </div>
+
+        {/* Content Side */}
+        <div className="lg:w-[55%] p-10 lg:p-16 flex flex-col justify-center">
+            <h3 className="text-4xl font-black text-slate-900 mb-2 tracking-tighter">{title}</h3>
+            <div className="flex gap-2 mb-8">
+                {subtitle.map((s, i) => (
+                    <span key={i} className="text-[#2563eb] text-[10px] font-black uppercase tracking-widest">
+                        {i > 0 && <span className="text-slate-200 mx-2">·</span>}
+                        {s}
+                    </span>
+                ))}
+            </div>
+
+            <p className="text-slate-500 leading-relaxed mb-10 text-lg font-medium">
+                {desc}
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+                {benefits.map((b, i) => (
+                    <div key={i} className="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                        <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[#2563eb] shadow-sm">
+                            {React.cloneElement(b.icon, { size: 18 })}
+                        </div>
+                        <span className="text-[11px] font-black uppercase tracking-widest text-slate-700">{b.text}</span>
+                    </div>
+                ))}
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+                {tags.map((t, i) => (
+                    <span key={i} className="px-4 py-2 bg-slate-50 border border-slate-100 rounded-xl text-[9px] font-black uppercase tracking-widest text-slate-400">
+                        {t}
+                    </span>
+                ))}
+            </div>
+        </div>
+    </div>
+);
 
 const Services = () => {
+    const leistungen = [
+        {
+            title: "Fenster",
+            image: "https://images.squarespace-cdn.com/content/v1/5d9e51dbc4bcc92e211c81c2/1729699175245-ROCW6XZH6CSAP82RLED5/image-asset.jpeg",
+            subtitle: ["Kunststoff", "Holz-Alu", "Aluminium"],
+            desc: "Moderne Fenstersysteme bringen mehr Licht in Ihr Zuhause und senken gleichzeitig Ihre Heizkosten. Wir verbauen ausschließlich Markenfenster (z.B. BEWA Plast) mit höchsten Dämmwerten.",
+            badgeColor: "bg-[#2563eb]",
+            benefits: [
+                { icon: <Gauge />, text: "Wärmedämmung bis Passivhaus-Standard" },
+                { icon: <Zap />, text: "Schalldämmung bis 47 dB" },
+                { icon: <Lock />, text: "Einbruchschutz RC2 / RC3" },
+                { icon: <Star />, text: "Pflegeleichte Oberflächen" }
+            ],
+            tags: ["3-fach Verglasung", "7-Kammer-Profil", "Alle RAL-Farben", "KfW-Förderfähig"]
+        },
+        {
+            title: "Haustüren",
+            image: "https://images.squarespace-cdn.com/content/v1/5d9e51dbc4bcc92e211c81c2/1708339711697-4JC4PG3EXBK9WU26NYQ0/image-asset.jpeg",
+            subtitle: ["Aluminium", "Kunststoff", "Holz"],
+            desc: "Ihre Haustür ist die Visitenkarte Ihres Zuhauses. Wir bieten über 200 Designs in allen Materialien – mit modernster Sicherheitstechnik und perfekter Wärmedämmung.",
+            badgeColor: "bg-[#2563eb]",
+            benefits: [
+                { icon: <ShieldCheck />, text: "RC2 Sicherheitsstandard serienmäßig" },
+                { icon: <Lock />, text: "Fingerprint & Smart-Lock möglich" },
+                { icon: <Gauge />, text: "U-Wert bis 0,47 W/(m²K)" },
+                { icon: <Sun />, text: "200+ Designs & Farben" }
+            ],
+            tags: ["Aluminium-Aussenseite", "Mehrfachverriegelung", "Barrierefreie Schwelle", "Made in Germany"]
+        },
+        {
+            title: "Rollladen & Raffstoren",
+            image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&q=80&w=1400",
+            subtitle: ["Vorbau", "Aufsatz", "Neubau & Nachrüstung"],
+            desc: "Rollladen schützen vor Hitze, Kälte, Lärm und Einbruch. Elektrisch oder manuell – wir finden die passende Lösung für jeden Fenstertyp. Auch für Raffstoren und Screens.",
+            badgeColor: "bg-[#2563eb]",
+            benefits: [
+                { icon: <Sun />, text: "Bis zu 75% weniger Hitze im Sommer" },
+                { icon: <ShieldCheck />, text: "Zusätzlicher Einbruchschutz" },
+                { icon: <Zap />, text: "Schallschutz bis 10 dB extra" },
+                { icon: <Lock />, text: "Smart-Home Motorsteuerung" }
+            ],
+            tags: ["Aluminium-Lamellen", "Flüsterleiser Motor", "Zeitschaltuhr", "Wind-/Sonnen-Sensor"]
+        },
+        {
+            title: "Markisen & Sonnenschutz",
+            image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=1400",
+            subtitle: ["Kassetten", "Gelenkarm", "Pergola"],
+            desc: "Genießen Sie Ihre Terrasse ohne Hitze. Unsere Markisen bieten UV-Schutz, Regenschutz und verlängern Ihren Wohnraum nach draußen. Inklusive LED-Beleuchtung und Automatik.",
+            badgeColor: "bg-[#2563eb]",
+            benefits: [
+                { icon: <Sun />, text: "UV-Schutz bis 95%" },
+                { icon: <Wind />, text: "Windstabil bis 38 km/h" },
+                { icon: <ShieldCheck />, text: "Kassetten-System schützt Stoff" },
+                { icon: <Zap />, text: "Wartungsarme Technik" }
+            ],
+            tags: ["LED-Beleuchtung", "Windwächter", "Acryl-Hochleistungsstoff", "Fernbedienung"]
+        }
+    ];
+
     return (
-        <section id="leistungen" className="py-24 lg:py-32 max-w-7xl mx-auto px-6">
-            <FadeInSection>
-                <div className="text-center mb-16 lg:mb-24">
-                    <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
-                        Unsere Fachbereiche
-                    </span>
-                    <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
-                        Was wir für Sie tun
-                    </h2>
-                    <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
-                        Von der Beratung bis zur fertigen Montage – alles aus einer Hand mit Qualitätsgarantie.
-                        Wir setzen auf Markenprodukte „Made in Germany“.
-                    </p>
+        <section id="leistungen" className="py-24 lg:py-40 bg-white">
+            <div className="max-w-7xl mx-auto px-6">
+                <FadeInSection>
+                    <div className="text-center mb-24 lg:mb-32">
+                        <span className="bg-[#2563eb]/10 text-[#2563eb] px-4 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest mb-6 inline-block">
+                            Unsere Fachbereiche
+                        </span>
+                        <h2 className="text-5xl lg:text-7xl font-black text-slate-900 mb-8 tracking-tighter">Was wir für Sie tun</h2>
+                        <p className="text-slate-500 max-w-2xl mx-auto text-lg font-medium leading-relaxed">
+                            Von der Beratung bis zur fertigen Montage – alles aus einer Hand mit Qualitätsgarantie. Wir setzen auf Markenprodukte „Made in Germany“.
+                        </p>
+                    </div>
+                </FadeInSection>
+
+                <div className="flex flex-col">
+                    {leistungen.map((service, i) => (
+                        <FadeInSection key={i} delay={i * 0.1}>
+                            <ServiceCard {...service} />
+                        </FadeInSection>
+                    ))}
                 </div>
-            </FadeInSection>
-
-            <div className="grid gap-12 lg:gap-20">
-                {services.map((s, i) => (
-                    <FadeInSection key={s.id} delay={i * 0.1}>
-                        <div className="group bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden">
-                            <div className="flex flex-col lg:flex-row">
-                                {/* Image Container */}
-                                <div className="lg:w-5/12 relative aspect-[16/10] lg:aspect-square overflow-hidden">
-                                    <img
-                                        src={s.img}
-                                        alt={s.title}
-                                        loading="lazy"
-                                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                    <div className="absolute top-6 left-6 px-4 py-2 rounded-xl bg-primary/90 text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md">
-                                        {s.title}
-                                    </div>
-                                </div>
-
-                                {/* Content Container */}
-                                <div className="lg:w-7/12 p-8 lg:p-16 flex flex-col justify-center">
-                                    <h3 className="text-3xl font-extrabold text-slate-900 mb-2">
-                                        {s.title}
-                                    </h3>
-                                    <div className="text-sm font-bold text-primary mb-6 flex items-center gap-2">
-                                        <span className="w-8 h-[2px] bg-primary/20" />
-                                        {s.subtitle}
-                                    </div>
-                                    <p className="text-slate-500 leading-relaxed mb-10 text-lg">
-                                        {s.desc}
-                                    </p>
-
-                                    {/* Features Grid */}
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-                                        {s.benefits.map((b, j) => (
-                                            <div key={j} className="flex items-center gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-100/50 hover:bg-white hover:shadow-lg transition-all">
-                                                <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
-                                                    {b.icon}
-                                                </div>
-                                                <span className="text-sm font-bold text-slate-700">{b.text}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    {/* Badges */}
-                                    <div className="flex flex-wrap gap-2 text-[10px] font-black tracking-widest uppercase">
-                                        {s.highlights.map((h, j) => (
-                                            <span key={j} className="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-500 border border-slate-200/50">
-                                                {h}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </FadeInSection>
-                ))}
             </div>
         </section>
     );

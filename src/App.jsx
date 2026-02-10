@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 /* ============================================================
-   GIUSEPPE MILAZZO – Fenster · Rollladen · Markisen · Haustüren
-   Komplett Refactored mit Tailwind CSS & React
+   GIUSEPPE MILAZZO – MASTERING THE VIEW
    ============================================================ */
 
 // Layout
@@ -14,7 +13,6 @@ import Hero from './components/sections/Hero';
 import Kennzahlen from './components/sections/Kennzahlen';
 import Services from './components/sections/Services';
 import Galerie from './components/sections/Galerie';
-import Hersteller from './components/sections/Hersteller';
 import About from './components/sections/About';
 import Reviews from './components/sections/Reviews';
 import FAQ from './components/sections/FAQ';
@@ -22,6 +20,7 @@ import Einzugsgebiet from './components/sections/Einzugsgebiet';
 import Blog from './components/sections/Blog';
 import Terminbuchung from './components/sections/Terminbuchung';
 import Contact from './components/sections/Contact';
+import Hersteller from './components/sections/Hersteller';
 
 // Rechtliches
 import Impressum from './components/legal/Impressum';
@@ -44,18 +43,17 @@ const App = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-white selection:bg-primary/10 selection:text-primary">
-
+        <div className="min-h-screen bg-white">
             {/* Navigation */}
             <Navbar scrolled={scrolled} />
 
-            {/* Hauptinhalt */}
+            {/* Main Content Area */}
             <main>
                 <Hero />
                 <Kennzahlen />
                 <Services />
-                <Galerie />
                 <Hersteller />
+                <Galerie />
                 <About />
                 <Reviews />
                 <FAQ />
@@ -65,18 +63,18 @@ const App = () => {
                 <Contact />
             </main>
 
-            {/* Footer */}
+            {/* Footer with modal triggers */}
             <Footer
                 onShowImpressum={() => setShowImpressum(true)}
                 onShowDatenschutz={() => setShowDatenschutz(true)}
             />
 
-            {/* Schwebende UI-Elemente */}
+            {/* Floating UI Layer */}
             <WhatsAppButton />
             <ScrollNachOben />
             <HinweisLeiste />
 
-            {/* Rechtliche Overlays */}
+            {/* Overlays / Modals */}
             {showImpressum && <Impressum onClose={() => setShowImpressum(false)} />}
             {showDatenschutz && <Datenschutz onClose={() => setShowDatenschutz(false)} />}
         </div>

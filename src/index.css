@@ -2,58 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Base Styles */
 @layer base {
     html {
         scroll-behavior: smooth;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-        @apply font-inter bg-white text-slate-900 overflow-x-hidden;
     }
 }
 
-/* Custom Components */
-@layer components {
-    .glass {
-        @apply bg-white/75 backdrop-blur-xl;
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
-    }
-
-    .gradient-text {
-        @apply bg-clip-text text-transparent bg-gradient-to-br from-primary to-violet-600;
-    }
-
-    .hover-lift {
-        @apply transition-all duration-300;
-    }
-
-    .hover-lift:hover {
-        @apply -translate-y-1.5 shadow-xl;
-    }
-}
-
-/* Global transitions for buttons */
-button,
-a {
-    @apply transition-all duration-300;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    @apply bg-slate-50;
-}
-
-::-webkit-scrollbar-thumb {
-    @apply bg-slate-300 rounded-full border-2 border-slate-50;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    @apply bg-slate-400;
-}
+/* Base resets handled by tailwind preflight */

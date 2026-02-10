@@ -1,69 +1,63 @@
 import React from 'react';
-import { X } from 'lucide-react';
+import { X, ShieldCheck, HelpCircle } from 'lucide-react';
 
 const Impressum = ({ onClose }) => {
     return (
         <div className="fixed inset-0 z-[10000] flex items-center justify-center p-6 lg:p-12">
-            <div
-                className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
-                onClick={onClose}
-            />
-            <div className="relative w-full max-w-4xl max-h-full bg-white rounded-[3rem] shadow-3xl overflow-hidden flex flex-col animate-scale-in">
+            <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-xl" onClick={onClose} />
+            <div className="relative w-full max-w-5xl max-h-full bg-white rounded-[4rem] shadow-3xl overflow-hidden flex flex-col animate-scale-in">
+
+                {/* Header Decoration */}
+                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-primary to-transparent" />
+
                 {/* Header */}
-                <div className="px-10 py-8 border-b border-slate-100 flex items-center justify-between bg-slate-50">
-                    <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-3">
-                        <span className="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center text-xs">§</span>
-                        Impressum
-                    </h2>
-                    <button
-                        onClick={onClose}
-                        className="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-red-500 hover:border-red-100 hover:bg-red-50 transition-all"
-                    >
-                        <X size={20} />
+                <div className="px-12 py-12 border-b border-slate-50 flex items-center justify-between">
+                    <div>
+                        <span className="text-primary text-[10px] font-black uppercase tracking-[0.4em] mb-2 block italic">Legal Information</span>
+                        <h2 className="text-4xl font-black text-slate-950 tracking-tighter italic">Impressum<span className="text-primary">.</span></h2>
+                    </div>
+                    <button onClick={onClose} className="w-16 h-16 rounded-[2rem] bg-slate-50 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-900 transition-all duration-500">
+                        <X size={32} />
                     </button>
                 </div>
 
                 {/* Content */}
-                <div className="p-10 lg:p-16 overflow-y-auto text-slate-600 leading-relaxed space-y-12">
-                    <section>
-                        <h3 className="text-xs font-black uppercase tracking-widest text-primary mb-4 italic">Angaben gemäß § 5 TMG</h3>
-                        <p className="text-xl font-bold text-slate-800">
-                            Giuseppe Milazzo<br />
-                            Fenster · Rollladen · Markisen · Haustüren
-                        </p>
-                        <p className="mt-4">
-                            Musterstraße 123<br />
-                            65599 Dornburg
-                        </p>
-                    </section>
-
-                    <section className="grid md:grid-cols-2 gap-12 pt-8 border-t border-slate-50">
-                        <div>
-                            <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">Kontakt</h4>
-                            <p className="font-bold text-slate-800">
-                                Telefon: 06436 8779226<br />
-                                E-Mail: info@bepo-milazzo.de
-                            </p>
+                <div className="p-12 lg:p-20 overflow-y-auto no-scrollbar space-y-20">
+                    <section className="grid lg:grid-cols-2 gap-16">
+                        <div className="space-y-6">
+                            <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-primary italic">Angaben gemäß § 5 TMG</h3>
+                            <div className="text-3xl font-black text-slate-950 leading-tight">
+                                Giuseppe Milazzo<br />
+                                <span className="text-lg text-slate-500 font-bold block mt-2 italic">Fenster · Haustüren · Rollladen</span>
+                            </div>
                         </div>
-                        <div>
-                            <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">Aufsichtsbehörde</h4>
-                            <p className="text-sm">
-                                Handwerkskammer Wiesbaden<br />
-                                Betriebsnummer: 1234567
-                            </p>
+                        <div className="space-y-8 pt-8 border-t border-slate-50 lg:border-t-0">
+                            <AddressBlock label="Adresse" value="Musterstraße 123, 65599 Dornburg" />
+                            <AddressBlock label="Kontakt" value="06436 8779226 | info@bepo-milazzo.de" />
                         </div>
                     </section>
 
-                    <section className="pt-8 border-t border-slate-50">
-                        <h4 className="text-xs font-black uppercase tracking-widest text-slate-900 mb-4">Haftung für Inhalte</h4>
-                        <p className="text-sm">
-                            Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.
-                        </p>
+                    <section className="pt-12 border-t border-slate-50 grid lg:grid-cols-3 gap-12 text-sm text-slate-500 leading-relaxed italic">
+                        <div className="space-y-4">
+                            <h4 className="font-black text-slate-900 uppercase tracking-widest text-[10px]">Aufsichtsbehörde</h4>
+                            <p>Handwerkskammer Wiesbaden<br />Betriebsnummer: 1234567</p>
+                        </div>
+                        <div className="lg:col-span-2 space-y-4">
+                            <h4 className="font-black text-slate-900 uppercase tracking-widest text-[10px]">Haftung für Inhalte</h4>
+                            <p>Wir übernehmen gemäß § 7 Abs.1 TMG die Verantwortung für unsere eigenen Inhalte nach den allgemeinen Gesetzen. Die Überwachung fremder Informationen ist jedoch nach §§ 8-10 TMG nicht verpflichtend.</p>
+                        </div>
                     </section>
                 </div>
             </div>
         </div>
     );
 };
+
+const AddressBlock = ({ label, value }) => (
+    <div className="space-y-2">
+        <div className="text-[10px] font-black uppercase tracking-widest text-slate-300">{label}</div>
+        <div className="text-lg font-bold text-slate-900">{value}</div>
+    </div>
+);
 
 export default Impressum;
