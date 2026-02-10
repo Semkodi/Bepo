@@ -1,62 +1,83 @@
-# Projekt: Bepo Milazzo – Moderne Handwerks-Webseite
+# Projektstatus: Bepo Milazzo – Premium Handwerks-Webseite
+**Stand: 10. Februar 2026**
 
-## Design-Konzept
-Premium, modernes One-Page Design mit Fokus auf Vertrauen und Handwerksqualität.
+## 1. Übersicht & Ziel
+Eine hochmoderne, leistungsstarke "One-Pager" Webseite für den Fenster- und Rollladenbau von Giuseppe Milazzo. Das Design ist auf **Premium-Qualität**, **Vertrauen** und **Conversion** (Anfragen generieren) ausgelegt.
 
-## Features
+## 2. Abgeschlossene Features (Ist-Zustand)
 
-### 1. Hero Section (Vollbild-Diashow)
-- Fullscreen-Hintergrund mit automatischem Bildwechsel (5 Sekunden)
-- Gradient-Overlay für optimale Lesbarkeit
-- Ken-Burns Zoom-Effekt bei jedem Bildwechsel
-- Klickbare Slide-Dots zur manuellen Navigation
-- CTA-Buttons: "Kostenlos beraten lassen" + "Anrufen"
+### 🎨 Design & Layout
+- **Responsives Design:** Perfekte Darstellung auf Mobilgeräten, Tablets und Desktops.
+- **Premium Ästhetik:** Nutzung von viel Weißraum, subtilen Schatten, abgerundeten Ecken (`rounded-3xl`) und hochwertigen Schriftarten (Inter).
+- **Animationen:** `Framer Motion` sorgt für sanftes Einblenden (`FadeIn`) aller Elemente beim Scrollen.
 
-### 2. Glassmorphismus-Navigation
-- Transparente Navbar im Hero-Bereich
-- Wird beim Scrollen zu einer weißen, blurred Leiste
-- Responsive mit animiertem Mobile-Menü
+### 🧩 Komponenten & Sektionen
+1.  **Hero Area (Startbildschirm)**
+    - Vollbild-Hintergrundslider mit Zoom-Effekt.
+    - Klare Call-to-Actions: "Unsere Leistungen" & "Anrufen" (direkt verlinkt).
+    - Links-bündiger Text für modernen Look.
+2.  **Kennzahlen (Trust-Bar)**
+    - Zeigt Erfahrung (10+ Jahre), Zufriedenheit & Qualität auf einen Blick.
+3.  **Leistungen (Services)**
+    - Detaillierte Karten für Fenster, Haustüren, Rollläden & Markisen.
+    - Hochwertige Bilder mit einheitlicher Höhe für Symmetrie.
+    - Technische Details (U-Werte, RC2 Sicherheitsstandards) integriert.
+4.  **Galerie (Referenzen)**
+    - Filterbare Projektübersicht (Alle, Fenster, Türen...).
+    - Hover-Effekte auf den Projektbildern.
+5.  **Über Uns**
+    - Persönliche Vorstellung mit Bild und "Meisterbetrieb"-Badge.
+    - Vertrauenselemente (Häkchen-Liste).
+    - Subtiler Hintergrund für edle Optik.
+6.  **Kundenstimmen (Reviews)**
+    - Karussell oder Grid mit echten Kundenmeinungen.
+    - 5-Sterne-Darstellung zur Vertrauensbildung.
+7.  **FAQ (Häufige Fragen)**
+    - Akkordeon-Stil (aufklappbar) für 7 wichtige Fragen.
+    - "Noch Fragen?"-Box mit Kontakt-Link.
+8.  **Einzugsgebiet**
+    - Interaktive Karte (Google Maps Embed) im Dark-Mode-Stil.
+    - Liste der Tätigkeitsgebiete (Dornburg, Limburg, etc.).
+9.  **Ratgeber & Tipps (Blog)**
+    - Magazin-Layout für Expertenwissen (Förderung, Einbruchschutz).
+10. **Partner & Hersteller**
+    - Logos oder Namen der Zulieferer (z.B. BEWA Plast) zur Qualitätssicherung.
+11. **Terminbuchung**
+    - Modernes Anfrageformular mit Auswahl der Leistung.
+12. **Kontakt & Footer**
+    - Dunkler Abschlussbereich mit allen Kontaktdaten.
+    - Rechtliche Links (Impressum, Datenschutz) als modale Overlays.
 
-### 3. Statistik-Leiste
-- Schwebendes Card-Element, überlappt den Hero-Bereich
-- Zeigt: 10+ Jahre Erfahrung, 100% Zufriedenheit, Top Qualitätsprodukte
+### ⚖️ Rechtliches & DSGVO
+- **Cookie-Banner:** Premium "Glassmorphism"-Banner mit Auswahlmöglichkeit (Akzeptieren/Ablehnen).
+- **Impressum & Datenschutz:** Vollständige Platzhalter-Texte, eingebunden als Overlay (kein Neuladen der Seite nötig).
+- **SSL-Vorbereitung:** Die Seite ist bereit für HTTPS (via GitHub Pages oder Hoster).
 
-### 4. Leistungen
-- Drei Service-Karten mit Gradient-Icons: Fenster, Rollladen, Sonnenschutz
-- Hover-Lift Animation (Card hebt sich beim Drüberfahren)
-- Scroll-basiertes Einblenden (jede Karte animiert separat)
+## 3. Technische Umsetzung
+- **Framework:** React 18
+- **Build Tool:** Vite (für extrem schnelle Ladezeiten)
+- **Styling:** Tailwind CSS (für modernes, wartbares CSS)
+- **Icons:** Lucide React (einheitliche, scharfe Icons)
+- **Animation:** Framer Motion
 
-### 5. Über uns
-- Bild + Text nebeneinander (responsiv)
-- Schwebende "10+ Jahre" Badge auf dem Bild
-- Checkliste mit grünen Häkchen
+## 4. Offene Punkte & Empfehlungen (To-Do)
 
-### 6. Kundenbewertungen
-- Drei Review-Karten mit 5 Sternen
-- Avatar-Initiale + Name + Ort
-- Hover-Lift Effekt
+### 📸 Content (Inhalt)
+- [ ] **Echte Bilder:** Die Platzhalter-Bilder in der Galerie und bei "Über uns" gegen echte Fotos von Giuseppe und seinen Projekten tauschen.
+- [ ] **Logo:** Ein echtes Firmenlogo in die Navigationsleiste (`Navbar.jsx`) und den Footer einfügen.
+- [ ] **Texte:** Die Texte im "Ratgeber" und den "Leistungen" bei Bedarf noch individueller auf die Firma zuschneiden.
 
-### 7. Kontakt (Dark-Theme)
-- Dunkler Block mit blauem Glow-Akzent
-- Kontaktinfos (Telefon, E-Mail, Standort) mit Icons
-- Kontaktformular (Name, E-Mail, Nachricht)
-- Sende-Button mit Hover-Effekt
+### ⚖️ Rechtliches (Wichtig!)
+- [ ] **Impressum prüfen:** Die Adresse und Steuernummer in `src/components/legal/Impressum.jsx` mit den echten Daten abgleichen.
+- [ ] **Datenschutz:** Den Text in `src/components/legal/Datenschutz.jsx` anwaltlich prüfen lassen oder einen Generator (z.B. e-recht24) nutzen.
 
-### 8. Footer
-- Logo, Impressum, Datenschutz
-- Copyright-Zeile
+### 🚀 Performance & SEO
+- [ ] **Meta-Tags:** In der `index.html` Titel und Beschreibung noch einmal finalisieren (für Google).
+- [ ] **Bilder optimieren:** Echte Fotos sollten komprimiert werden (WebP-Format), damit die Seite schnell lädt.
+- [ ] **Sitemap:** Für Google eine `sitemap.xml` erstellen (kann später gemacht werden).
 
-## Technologien
-- React + Vite
-- Framer Motion (Animationen)
-- Lucide React (Icons)
-- Google Fonts (Inter)
-- Inline CSS (kein Tailwind)
-
-## Kontakt-Daten
-- Tel: 06436 8779226
-- Ort: 65599 Dornburg
-- E-Mail: info@bepo-milazzo.de
+### ⚙️ Funktionalität
+- [ ] **Kontaktformular:** Aktuell ist das Formular "statisch". Um E-Mails zu empfangen, müsste man einen Dienst wie **EmailJS** oder **Formspree** anbinden (geringer Aufwand).
 
 ---
-*Letzte Aktualisierung: 10. Februar 2026 – Modernes Redesign*
+**Fazit:** Der Code ist professionell strukturiert, modular aufgebaut und bereit für den Einsatz. Die Seite wirkt visuell sehr hochwertig ("High-End").
