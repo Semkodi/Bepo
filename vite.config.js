@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // Ersetze 'Bepo' durch deinen exakten GitHub-Repository-Namen
-  base: './',
+  base: '/Bepo/',
 })
