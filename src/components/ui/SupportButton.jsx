@@ -1,7 +1,7 @@
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
 
-const WhatsAppButton = () => {
+const SupportButton = () => {
     return (
         <a
             href="https://wa.me/4964368779226?text=Guten%20Tag%20Herr%20Milazzo,%20ich%20hätte%20eine%20Anfrage%20bezüglich..."
@@ -30,4 +30,4 @@ const WhatsAppButton = () => {
     );
 };
 
-export default WhatsAppButton;
+export default SupportButton;

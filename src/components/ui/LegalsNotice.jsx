@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, X } from 'lucide-react';
 
-const CookieBanner = () => {
+const LegalsNotice = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -55,4 +55,4 @@ const CookieBanner = () => {
     );
 };
 
-export default CookieBanner;
+export default LegalsNotice;

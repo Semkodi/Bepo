@@ -36,8 +36,8 @@ import Impressum from './components/legal/Impressum';
 import Datenschutz from './components/legal/Datenschutz';
 
 // 4. IMPORT: UI-Helfer (Floating Elements)
-import CookieBanner from './components/ui/CookieBanner';     // DSGVO Banner
-import WhatsAppButton from './components/ui/WhatsAppButton'; // WhatsApp Chat
+import LegalsNotice from './components/ui/LegalsNotice';     // DSGVO Banner
+import SupportButton from './components/ui/SupportButton'; // WhatsApp Chat
 import ScrollNachOben from './components/ui/ScrollNachOben'; // "Nach oben"-Pfeil
 
 const App = () => {
@@ -82,9 +82,9 @@ const App = () => {
             />
 
             {/* 🎈 SCHWEBENDE ELEMENTE (Z-Index: High) */}
-            <WhatsAppButton />
+            <SupportButton />
             <ScrollNachOben />
-            <CookieBanner />
+            <LegalsNotice />
 
             {/* ⚖️ RECHTLICHE OVERLAYS (Modals) */}
             {showImpressum && <Impressum onClose={() => setShowImpressum(false)} />}
